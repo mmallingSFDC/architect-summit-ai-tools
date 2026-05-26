@@ -1,0 +1,860 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI-Augmented Delivery Lifecycle</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<style>
+body {
+    background-color: #0f172a;
+    color: #f8fafc;
+    font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+}
+.glass-card {
+    background: rgba(30, 41, 59, 0.7);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+}
+.accent-cyan { color: #22d3ee; }
+.accent-pink { color: #f472b6; }
+.accent-purple { color: #c084fc; }
+.accent-amber { color: #fbbf24; }
+.accent-emerald { color: #34d399; }
+.bg-cyan-glow { background: radial-gradient(circle, rgba(34,211,238,0.15) 0%, rgba(15,23,42,0) 70%); }
+.chart-container {
+    position: relative;
+    width: 100%;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+    height: 60vh;
+    max-height: 500px;
+    min-height: 350px;
+}
+.vibe-spectrum {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(30, 41, 59, 0.8);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 9999px;
+    padding: 4px 12px;
+    font-size: 11px;
+}
+.vibe-spectrum-bar {
+    position: relative;
+    width: 80px;
+    height: 6px;
+    border-radius: 9999px;
+    background: linear-gradient(to right, #34d399, #fbbf24, #f87171);
+}
+.vibe-spectrum-marker {
+    position: absolute;
+    left: 75%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 10px;
+    height: 10px;
+    border-radius: 9999px;
+    background: #d36c34;
+    border: 2px solid white;
+}
+.env-badge-gov {
+    background: rgba(251, 191, 36, 0.15);
+    border: 1px solid rgba(251, 191, 36, 0.4);
+    color: #fbbf24;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    padding: 2px 8px;
+    border-radius: 9999px;
+}
+.env-badge-commercial {
+    background: rgba(52, 211, 153, 0.15);
+    border: 1px solid rgba(52, 211, 153, 0.4);
+    color: #34d399;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    padding: 2px 8px;
+    border-radius: 9999px;
+}
+.cmd-block {
+    background: #020617;
+    border: 1px solid rgba(34,211,238,0.2);
+    border-radius: 8px;
+    padding: 12px 16px;
+    font-family: 'Courier New', monospace;
+    font-size: 12px;
+    color: #22d3ee;
+    position: relative;
+}
+.cmd-block .prompt { color: #64748b; }
+.warning-card {
+    background: rgba(251, 191, 36, 0.08);
+    border: 1px solid rgba(251, 191, 36, 0.25);
+    border-left: 4px solid #fbbf24;
+}
+</style>
+</head>
+<body class="antialiased pb-20">
+
+<!-- ═══════════════════════════════════════════════ HEADER ═══ -->
+<header class="pt-20 pb-12 px-6 text-center bg-cyan-glow">
+    <div class="max-w-4xl mx-auto">
+        <h1 class="text-4xl md:text-6xl font-extrabold tracking-tight mb-4">
+            <span style="color: transparent; -webkit-background-clip: text; background-clip: text; background-image: linear-gradient(to right, #22d3ee, #c084fc, #f472b6);">AI-Augmented Delivery Lifecycle</span>
+        </h1>
+        <p class="text-xl text-slate-300 mb-8 leading-relaxed">
+            Salesforce Professional Services Enablement: A practical, environment-aware workflow for augmenting every phase of delivery — from discovery to agentic development — using an integrated multi-tool AI stack.
+        </p>
+        <div class="flex flex-wrap gap-3 justify-center">
+            <div class="inline-block bg-slate-800 rounded-full px-5 py-2 border border-slate-600">
+                <span class="font-semibold text-cyan-400">Human-in-the-Loop</span> <span class="text-slate-400">Collaboration Model</span>
+            </div>
+            <div class="inline-block bg-amber-950 rounded-full px-5 py-2 border border-amber-700">
+                <span class="font-semibold text-amber-400">GovCloud</span> <span class="text-slate-400">+ Commercial Paths</span>
+            </div>
+        </div>
+    </div>
+</header>
+
+<main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-24">
+
+<!-- ═══════════════════════════ SECTION 1: INTEGRATED WORKFLOW ═══ -->
+<section class="bg-slate-900/50 p-8 rounded-2xl border border-slate-700">
+    <div class="mb-10 text-center max-w-3xl mx-auto">
+        <h2 class="text-3xl font-bold mb-4">The Integrated AI Workflow</h2>
+        <p class="text-slate-400 text-lg">
+            Each tool is chosen for a specific strength. The strategy's foundation is establishing a <strong class="text-white">grounded truth</strong> in NotebookLM before generating any assets — your permanent project memory that keeps every AI tool tethered to customer intent.
+        </p>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-4 gap-6">
+        <div class="glass-card rounded-xl p-6 text-center">
+            <div class="w-12 h-12 rounded-full bg-cyan-900 border border-cyan-400 flex items-center justify-center mx-auto mb-4 font-bold">1</div>
+            <h3 class="text-xl font-bold accent-cyan mb-1">NotebookLM</h3>
+            <p class="text-[10px] text-slate-300 font-semibold mb-2 uppercase tracking-widest">The Memory</p>
+            <p class="text-xs text-slate-400">Raw meeting transcripts, SOWs, and discovery docs are ingested here — creating a citation-backed knowledge base that anchors every downstream AI interaction.</p>
+        </div>
+        <div class="glass-card rounded-xl p-6 text-center">
+            <div class="w-12 h-12 rounded-full bg-purple-900 border border-purple-400 flex items-center justify-center mx-auto mb-4 font-bold">2</div>
+            <h3 class="text-xl font-bold accent-purple mb-1">Gemini</h3>
+            <p class="text-[10px] text-slate-300 font-semibold mb-2 uppercase tracking-widest">The Co-Architect</p>
+            <p class="text-xs text-slate-400">The most capable general-purpose model for architectural synthesis. Queries NotebookLM as its source of truth and translates raw facts into user stories, data models, and diagram inputs.</p>
+        </div>
+        <div class="glass-card rounded-xl p-6 text-center">
+            <div class="w-12 h-12 rounded-full bg-pink-900 border border-pink-400 flex items-center justify-center mx-auto mb-4 font-bold">3</div>
+            <h3 class="text-xl font-bold accent-pink mb-1">Lucidchart</h3>
+            <p class="text-[10px] text-slate-300 font-semibold mb-2 uppercase tracking-widest">The Visualizer</p>
+            <p class="text-xs text-slate-400">Ingests Gemini's structured output (Mermaid.js/JSON) to auto-generate ERDs and process flows. Creates the shared visual blueprint the team aligns on before build begins.</p>
+        </div>
+        <div class="glass-card rounded-xl p-6 text-center">
+            <div class="w-12 h-12 rounded-full bg-emerald-900 border border-emerald-400 flex items-center justify-center mx-auto mb-4 font-bold">4</div>
+            <h3 class="text-xl font-bold text-emerald-400 mb-1">Cursor + Claude</h3>
+            <p class="text-[10px] text-slate-300 font-semibold mb-2 uppercase tracking-widest">The Builders</p>
+            <p class="text-xs text-slate-400">Generate metadata, Apex, Flows, and LWC directly from structured user stories. In SDOs, CDOs, and Commercial Cloud, these tools connect directly to the org for a full agentic loop.</p>
+            <span class="env-badge-commercial mt-3 inline-block">Full Agentic in Commercial</span>
+        </div>
+    </div>
+</section>
+
+<!-- ═══════════════════════════ SECTION 2: ENVIRONMENT-AWARE STRATEGY ═══ -->
+<section class="bg-slate-900/50 p-8 rounded-2xl border border-slate-700">
+    <div class="mb-10 text-center max-w-4xl mx-auto">
+        <h2 class="text-3xl font-bold mb-4">Know Your Environment</h2>
+        <p class="text-slate-400 text-lg">
+            Where your org lives determines which AI strategy you use. This is the most critical architectural decision before you write a single line of code.
+        </p>
+    </div>
+
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+
+        <!-- GovCloud Card -->
+        <div class="glass-card p-6 rounded-xl border-t-4 border-amber-500">
+            <div class="flex items-center gap-3 mb-5">
+                <span class="text-2xl">🏛️</span>
+                <div>
+                    <h3 class="text-xl font-bold text-amber-400">GovCloud</h3>
+                    <p class="text-xs text-slate-400 uppercase tracking-widest">Two-Stage Strategy: Build in SDO/CDO → Deploy via CLI</p>
+                </div>
+            </div>
+
+            <!-- Stage 1 -->
+            <div class="bg-emerald-950/30 border border-emerald-800/40 rounded-lg p-4 mb-3">
+                <p class="text-xs font-bold text-emerald-300 uppercase tracking-widest mb-2">Stage 1 — Develop &amp; Validate in SDO/CDO</p>
+                <p class="text-xs text-slate-400 mb-2">Connect Claude Code or Cursor to an SDO or CDO. Run the full agentic loop here — deploy, test, read errors, iterate — until the solution is validated.</p>
+                <ul class="text-xs text-slate-400 space-y-1">
+                    <li class="flex items-start gap-2"><span class="text-emerald-400">✓</span> Full Read → Decide → Act → Observe cycle available</li>
+                    <li class="flex items-start gap-2"><span class="text-emerald-400">✓</span> Authenticate via <code class="text-emerald-300">sf org login web --alias sdo-dev</code></li>
+                </ul>
+            </div>
+
+            <!-- Stage 2 -->
+            <div class="warning-card rounded-lg p-4 mb-5">
+                <p class="text-xs font-bold text-amber-300 uppercase tracking-widest mb-2">Stage 2 — Deploy to GovCloud via CLI Only</p>
+                <p class="text-xs text-slate-400 mb-2">Once validated, deploy from your terminal directly. Claude and Cursor <strong>do not connect to the GovCloud org</strong> — the SF CLI is the only bridge.</p>
+                <div class="cmd-block mt-2">
+                    <span class="prompt"># Push validated metadata to GovCloud</span><br>
+                    sf project deploy start --target-org &lt;govcloud-alias&gt;
+                </div>
+            </div>
+
+            <div class="pt-4 border-t border-slate-700">
+                <p class="text-[10px] text-slate-500 uppercase tracking-widest mb-2">Workflow</p>
+                <div class="flex items-center gap-1 text-xs flex-wrap">
+                    <span class="bg-cyan-900/50 text-cyan-300 px-2 py-1 rounded">NotebookLM</span>
+                    <span class="text-slate-500">→</span>
+                    <span class="bg-purple-900/50 text-purple-300 px-2 py-1 rounded">Gemini</span>
+                    <span class="text-slate-500">→</span>
+                    <span class="bg-pink-900/50 text-pink-300 px-2 py-1 rounded">Lucidchart</span>
+                    <span class="text-slate-500">→</span>
+                    <span class="bg-emerald-900/50 text-emerald-300 px-2 py-1 rounded">Claude/Cursor + SDO/CDO</span>
+                    <span class="text-slate-500">→</span>
+                    <span class="bg-amber-900/50 text-amber-300 px-2 py-1 rounded">CLI Deploy to GovCloud</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- SDO / CDO / Commercial Card -->
+        <div class="glass-card p-6 rounded-xl border-t-4 border-emerald-500">
+            <div class="flex items-center gap-3 mb-4">
+                <span class="text-2xl">⚡</span>
+                <div>
+                    <h3 class="text-xl font-bold text-emerald-400">SDOs, CDOs & Commercial Cloud</h3>
+                    <p class="text-xs text-slate-400 uppercase tracking-widest">Full Agentic Loop Available</p>
+                </div>
+            </div>
+
+            <div class="bg-emerald-950/30 border border-emerald-800/40 rounded-lg p-4 mb-5">
+                <p class="text-xs font-bold text-emerald-300 mb-1">✓ Full Verification Loop Enabled</p>
+                <p class="text-sm text-slate-300">Claude Code and Cursor can <strong>connect directly to your org</strong>, deploy metadata, run Apex tests, receive error messages, and iterate autonomously — this is the agentic process.</p>
+            </div>
+
+            <h4 class="text-emerald-300 font-bold text-sm mb-3">The Agentic Cycle: Read → Decide → Act → Observe</h4>
+            <p class="text-xs text-slate-400 mb-4">The agent independently attempts changes, runs a dry-deploy for validation, reads the error message Salesforce returns, learns from it, and iterates — all without you manually relaying feedback.</p>
+
+            <ul class="text-xs text-slate-400 space-y-2">
+                <li class="flex items-start gap-2"><span class="text-emerald-400 mt-0.5">✓</span> Authenticate Claude Code to your SDO/CDO via <code class="text-emerald-300">sf org login web</code></li>
+                <li class="flex items-start gap-2"><span class="text-emerald-400 mt-0.5">✓</span> Agent deploys, tests, reads logs, fixes permissions — end-to-end without manual relay</li>
+                <li class="flex items-start gap-2"><span class="text-emerald-400 mt-0.5">✓</span> Use SDOs to prototype safely — never connect agents to production customer orgs without explicit written consent</li>
+                <li class="flex items-start gap-2"><span class="text-emerald-400 mt-0.5">✓</span> Even with full agentic mode: always start with the planning agent before execution</li>
+            </ul>
+
+            <div class="mt-5 pt-4 border-t border-slate-700">
+                <p class="text-[10px] text-slate-500 uppercase tracking-widest mb-2">Workflow</p>
+                <div class="flex items-center gap-1 text-xs flex-wrap">
+                    <span class="bg-cyan-900/50 text-cyan-300 px-2 py-1 rounded">NotebookLM</span>
+                    <span class="text-slate-500">→</span>
+                    <span class="bg-purple-900/50 text-purple-300 px-2 py-1 rounded">Gemini</span>
+                    <span class="text-slate-500">→</span>
+                    <span class="bg-pink-900/50 text-pink-300 px-2 py-1 rounded">Lucidchart</span>
+                    <span class="text-slate-500">→</span>
+                    <span class="bg-emerald-900/50 text-emerald-300 px-2 py-1 rounded">Claude/Cursor</span>
+                    <span class="text-slate-500">→</span>
+                    <span class="bg-emerald-700/50 text-emerald-200 px-2 py-1 rounded">Auto Deploy + Test Loop</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ═══════════════════════════ SECTION 3: COGNITIVE STACK ═══ -->
+<section class="bg-slate-900/50 p-8 rounded-2xl border border-slate-700">
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+    <div>
+        <h2 class="text-3xl font-bold mb-4 text-white">The Ultimate Cognitive Stack</h2>
+        <p class="text-slate-300 text-lg mb-8 leading-relaxed">
+            By decoupling <strong>Source Truth</strong> from <strong>Generative Reasoning</strong>, we move beyond basic chatbots into a high-fidelity intelligence pipeline. Research and logic are two distinct, optimized functions.
+        </p>
+        <div class="space-y-6">
+            <div class="glass-card p-6 rounded-lg border-l-4 border-cyan-400 bg-slate-800/50">
+                <h4 class="font-bold text-cyan-400 mb-2 text-lg">NotebookLM: Permanent Memory</h4>
+                <p class="text-slate-400 leading-relaxed text-sm">
+                    Acts as the <strong>long-term project memory</strong>. By centralizing transcripts and documentation, it enforces strict grounding — the model remains tethered to your specific constraints and never hallucinates outside the provided source material. Now accessible directly inside Claude via <code class="text-cyan-300">notebooklm-mcp-cli</code>.
+                </p>
+            </div>
+            <div class="glass-card p-6 rounded-lg border-l-4 border-purple-400 bg-slate-800/50">
+                <h4 class="font-bold text-purple-400 mb-2 text-lg">Gemini: Co-Architect & Reasoning Engine</h4>
+                <p class="text-slate-400 leading-relaxed text-sm">
+                    The most capable general-purpose model for multi-step architectural synthesis. Gemini's massive context window and deep Google ecosystem integration make it uniquely suited to translate verified discovery facts into structured architectures, diagram-ready code, and deployment blueprints — in a single step. In GovCloud, it is your primary co-architect.
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <div class="glass-card rounded-xl p-8 bg-slate-800/30 border border-slate-700">
+        <h3 class="text-xl font-semibold mb-6 text-white text-center">The Synergy Loop</h3>
+        <div class="chart-container">
+            <canvas id="synergyChart"></canvas>
+        </div>
+    </div>
+    </div>
+</section>
+
+<!-- ═══════════════════════════ SECTION 4: WHY NOT VIBES ═══ -->
+<section class="bg-slate-900/50 p-8 rounded-2xl border border-slate-700">
+    <div class="mb-10 text-center max-w-4xl mx-auto">
+        <h2 class="text-3xl font-bold mb-4">Why not Vibes?</h2>
+        <p class="text-slate-400 text-lg">
+            Agentforce Vibes represents the gold standard for security and Trust Layer compliance — though its architectural constraints create unique challenges for multi-AI workflows. Note: Vibes is not yet available in GovCloud (in progress post-TDX '26).
+        </p>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <div class="glass-card p-6 rounded-xl border-t-4 border-emerald-500">
+            <h3 class="text-xl font-bold mb-4 flex items-center">
+                <span class="mr-2">🛡️</span> The Case for Vibes
+            </h3>
+            <p class="text-sm text-slate-300 mb-4">Vibes is the right choice when data residency and security are non-negotiable and your team works within a single Salesforce-native context.</p>
+            <ul class="text-xs text-slate-400 space-y-2">
+                <li class="flex items-start"><span class="text-emerald-500 mr-2">✓</span> <strong>Trust Layer:</strong> Built-in PII detection, toxicity masking, full audit trail, zero data retention on LLM requests.</li>
+                <li class="flex items-start"><span class="text-emerald-500 mr-2">✓</span> <strong>Isolation:</strong> Secure DX Falcon Foundation containers within Salesforce's private cloud infrastructure.</li>
+                <li class="flex items-start"><span class="text-emerald-500 mr-2">✓</span> <strong>Compatible:</strong> The Vibes VS Code extension works with Cursor and Windsurf — not just the browser IDE.</li>
+            </ul>
+        </div>
+
+        <div class="glass-card p-6 rounded-xl border-t-4 border-orange-500">
+            <h3 class="text-xl font-bold mb-4 flex items-center">
+                <span class="mr-2">🧩</span> Why Cursor + Claude
+            </h3>
+            <p class="text-sm text-slate-300 mb-4">Vibes' secure-by-design architecture limits collaboration in multi-AI workflows. Cursor + Claude provides the flexibility needed for the full lifecycle.</p>
+            <ul class="text-xs text-slate-400 space-y-2">
+                <li class="flex items-start"><span class="text-orange-500 mr-2">◆</span> <strong>Context Silos:</strong> Injecting external artifacts generated by NotebookLM or Gemini is more complex inside Vibes.</li>
+                <li class="flex items-start"><span class="text-orange-500 mr-2">◆</span> <strong>MCP Integration:</strong> Claude Code supports MCP servers natively — enabling direct NotebookLM integration via <code class="text-orange-300">notebooklm-mcp-cli</code>.</li>
+                <li class="flex items-start"><span class="text-orange-500 mr-2">◆</span> <strong>Workflow Flexibility:</strong> Full agentic loop with sf-skills, CLAUDE.md context, and custom hooks.</li>
+            </ul>
+        </div>
+    </div>
+</section>
+
+<!-- ═══════════════════════════ SECTION 5: SETUP YOUR ENVIRONMENT ═══ -->
+<section class="bg-slate-900/50 p-8 rounded-2xl border border-slate-700">
+    <div class="mb-10 text-center max-w-4xl mx-auto">
+        <h2 class="text-3xl font-bold mb-4">Set Up Your AI Development Environment</h2>
+        <p class="text-slate-400 text-lg">
+            Three one-time setup steps that unlock the full workflow. Do these before your first project session.
+        </p>
+    </div>
+
+    <div class="space-y-8">
+
+        <!-- Step 1: NotebookLM MCP -->
+        <div class="glass-card rounded-xl p-8 border-l-4 border-cyan-400">
+            <div class="flex items-start gap-5">
+                <div class="w-10 h-10 rounded-full bg-cyan-900 border border-cyan-400 flex items-center justify-center flex-shrink-0 font-bold text-cyan-400">A</div>
+                <div class="flex-grow">
+                    <h3 class="text-xl font-bold accent-cyan mb-1">Connect Claude to NotebookLM via MCP</h3>
+                    <p class="text-sm text-slate-400 mb-4">Instead of maintaining knowledge assets on your local machine and manually copying context between sessions, install <code class="text-cyan-300">notebooklm-mcp-cli</code>. This connects Claude directly to your NotebookLM notebooks so it can query your project's source of truth without leaving the coding session.</p>
+
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+                        <div>
+                            <p class="text-xs text-slate-500 uppercase tracking-widest mb-2">1. Install Prerequisites</p>
+                            <div class="cmd-block">
+                                <span class="prompt"># Install uv (Python package manager)</span><br>
+                                brew install uv
+                            </div>
+                        </div>
+                        <div>
+                            <p class="text-xs text-slate-500 uppercase tracking-widest mb-2">2. Install the MCP Server</p>
+                            <div class="cmd-block">
+                                <span class="prompt"># Install notebooklm-mcp-cli globally</span><br>
+                                uv tool install notebooklm-mcp-cli
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mb-4">
+                        <p class="text-xs text-slate-500 uppercase tracking-widest mb-2">3. Authenticate</p>
+                        <div class="cmd-block">
+                            <span class="prompt"># Login to your Google account</span><br>
+                            nlm login
+                        </div>
+                    </div>
+                    <div class="bg-cyan-950/30 border border-cyan-800/30 rounded-lg p-4">
+                        <p class="text-xs text-slate-400"><strong class="text-cyan-300">Result:</strong> Claude can now query any of your NotebookLM notebooks directly — retrieving grounded, citation-backed answers from your project's discovery documents without any manual file management. Configure the MCP server in your <code class="text-cyan-300">CLAUDE.md</code> using <code class="text-cyan-300">TemplateCLAUDE.md</code> as your starting point.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Step 2: CLAUDE.md -->
+        <div class="glass-card rounded-xl p-8 border-l-4 border-amber-400">
+            <div class="flex items-start gap-5">
+                <div class="w-10 h-10 rounded-full bg-amber-900 border border-amber-400 flex items-center justify-center flex-shrink-0 font-bold text-amber-400">B</div>
+                <div class="flex-grow">
+                    <h3 class="text-xl font-bold accent-amber mb-1">Create Your Project CLAUDE.md</h3>
+                    <p class="text-sm text-slate-400 mb-5">The <code class="text-amber-300">CLAUDE.md</code> file is Claude's persistent instruction set — loaded automatically at the start of every session. It solves context loss by telling the agent exactly what it needs to know before touching a single file. Copy <code class="text-amber-300">TemplateCLAUDE.md</code>, fill in the bracketed placeholders, and drop it in your project root.</p>
+
+                    <div class="bg-amber-950/20 border border-amber-800/30 rounded-lg p-4 mb-5">
+                        <p class="text-xs font-bold text-amber-300 uppercase tracking-widest mb-2">Golden Rule</p>
+                        <p class="text-xs text-slate-300">Every line must pass this test: <em>"Would removing this cause Claude to make a mistake?"</em> If not, cut it. A bloated CLAUDE.md causes Claude to ignore the rules inside it.</p>
+                    </div>
+
+                    <!-- Section grid -->
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-3 mb-5">
+
+                        <div class="bg-slate-950/50 border border-slate-700 rounded-lg p-3">
+                            <p class="text-[10px] text-amber-400 font-bold uppercase tracking-widest mb-2">1 · Project Identity</p>
+                            <ul class="text-xs text-slate-400 space-y-1">
+                                <li class="flex items-start gap-1.5"><span class="text-amber-400">→</span> Org type: SDO / CDO / GovCloud</li>
+                                <li class="flex items-start gap-1.5"><span class="text-amber-400">→</span> SF org alias used in all <code class="text-amber-300">sf</code> commands</li>
+                                <li class="flex items-start gap-1.5"><span class="text-amber-400">→</span> NotebookLM notebook ID for this project</li>
+                                <li class="flex items-start gap-1.5"><span class="text-amber-400">→</span> GovCloud deploy target alias (if applicable)</li>
+                            </ul>
+                        </div>
+
+                        <div class="bg-slate-950/50 border border-slate-700 rounded-lg p-3">
+                            <p class="text-[10px] text-cyan-400 font-bold uppercase tracking-widest mb-2">2 · Knowledge Retrieval</p>
+                            <ul class="text-xs text-slate-400 space-y-1">
+                                <li class="flex items-start gap-1.5"><span class="text-cyan-400">→</span> Query NotebookLM before writing any code or Flow</li>
+                                <li class="flex items-start gap-1.5"><span class="text-cyan-400">→</span> Never guess client business logic — look it up</li>
+                                <li class="flex items-start gap-1.5"><span class="text-cyan-400">→</span> Cite the source when referencing a business rule</li>
+                            </ul>
+                        </div>
+
+                        <div class="bg-slate-950/50 border border-slate-700 rounded-lg p-3">
+                            <p class="text-[10px] text-emerald-400 font-bold uppercase tracking-widest mb-2">3 · Salesforce Tooling</p>
+                            <ul class="text-xs text-slate-400 space-y-1">
+                                <li class="flex items-start gap-1.5"><span class="text-emerald-400">→</span> Use sf-skills for metadata inspection, SOQL, deploy, test</li>
+                                <li class="flex items-start gap-1.5"><span class="text-emerald-400">→</span> Read deployment errors directly — don't ask user to copy-paste</li>
+                                <li class="flex items-start gap-1.5"><span class="text-emerald-400">→</span> Use <code class="text-emerald-300">--target-org [alias]</code> on all <code class="text-emerald-300">sf</code> commands</li>
+                            </ul>
+                        </div>
+
+                        <div class="bg-slate-950/50 border border-slate-700 rounded-lg p-3">
+                            <p class="text-[10px] text-rose-400 font-bold uppercase tracking-widest mb-2">4 · Workflow Rules</p>
+                            <ul class="text-xs text-slate-400 space-y-1">
+                                <li class="flex items-start gap-1.5"><span class="text-rose-400">→</span> Always enter <code class="text-rose-300">/plan</code> mode before multi-file changes</li>
+                                <li class="flex items-start gap-1.5"><span class="text-rose-400">→</span> Commit after every completed task: <code class="text-rose-300">wip: [what changed]</code></li>
+                                <li class="flex items-start gap-1.5"><span class="text-rose-400">→</span> Run <code class="text-rose-300">/compact</code> when switching tasks or session grows long</li>
+                                <li class="flex items-start gap-1.5"><span class="text-rose-400">→</span> Hit <kbd class="bg-slate-700 px-1 rounded text-[10px]">Esc</kbd> immediately if going off track</li>
+                            </ul>
+                        </div>
+
+                        <div class="bg-slate-950/50 border border-slate-700 rounded-lg p-3">
+                            <p class="text-[10px] text-rose-300 font-bold uppercase tracking-widest mb-2">5 · work_in_progress.md</p>
+                            <ul class="text-xs text-slate-400 space-y-1">
+                                <li class="flex items-start gap-1.5"><span class="text-rose-300">→</span> Update after every step: Current Task, Completed, Key Decisions, Blockers, Next Steps</li>
+                                <li class="flex items-start gap-1.5"><span class="text-rose-300">→</span> First action each new session: read this file and report where we left off</li>
+                            </ul>
+                        </div>
+
+                        <div class="bg-slate-950/50 border border-slate-700 rounded-lg p-3">
+                            <p class="text-[10px] text-purple-400 font-bold uppercase tracking-widest mb-2">6 · SF Architecture Standards</p>
+                            <ul class="text-xs text-slate-400 space-y-1">
+                                <li class="flex items-start gap-1.5"><span class="text-purple-400">→</span> Declarative first — Flow/standard objects before Apex</li>
+                                <li class="flex items-start gap-1.5"><span class="text-purple-400">→</span> Bulkify everything — no SOQL or DML in loops</li>
+                                <li class="flex items-start gap-1.5"><span class="text-purple-400">→</span> One trigger per object, logic in handler class only</li>
+                                <li class="flex items-start gap-1.5"><span class="text-purple-400">→</span> <code class="text-purple-300">with sharing</code> on all Apex, FLS + CRUD enforced</li>
+                            </ul>
+                        </div>
+
+                        <div class="bg-slate-950/50 border border-slate-700 rounded-lg p-3">
+                            <p class="text-[10px] text-emerald-300 font-bold uppercase tracking-widest mb-2">7 · Verification</p>
+                            <ul class="text-xs text-slate-400 space-y-1">
+                                <li class="flex items-start gap-1.5"><span class="text-emerald-300">→</span> Never mark a task complete without verifying it worked</li>
+                                <li class="flex items-start gap-1.5"><span class="text-emerald-300">→</span> Run Apex tests and read the result — 0 errors, 0 failures</li>
+                                <li class="flex items-start gap-1.5"><span class="text-emerald-300">→</span> Write a failing test first, then fix, then confirm green</li>
+                            </ul>
+                        </div>
+
+                        <div class="bg-slate-950/50 border border-slate-700 rounded-lg p-3">
+                            <p class="text-[10px] text-red-400 font-bold uppercase tracking-widest mb-2">8 · Security &amp; Data</p>
+                            <ul class="text-xs text-slate-400 space-y-1">
+                                <li class="flex items-start gap-1.5"><span class="text-red-400">→</span> Never store customer data records locally</li>
+                                <li class="flex items-start gap-1.5"><span class="text-red-400">→</span> Never install npm/external packages without approval</li>
+                                <li class="flex items-start gap-1.5"><span class="text-red-400">→</span> Use SDO/CDO only — no production org without written disclosure</li>
+                            </ul>
+                        </div>
+
+                    </div>
+
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
+                        <div class="bg-slate-950/50 border border-slate-700 rounded-lg p-3">
+                            <p class="text-[10px] text-slate-400 font-bold uppercase tracking-widest mb-2">9 · Response Style</p>
+                            <ul class="text-xs text-slate-400 space-y-1">
+                                <li class="flex items-start gap-1.5"><span class="text-slate-400">→</span> Act as Senior Salesforce Technical Architect</li>
+                                <li class="flex items-start gap-1.5"><span class="text-slate-400">→</span> Include Architectural Trade-offs on every solution</li>
+                                <li class="flex items-start gap-1.5"><span class="text-slate-400">→</span> Query NotebookLM before asking the user</li>
+                            </ul>
+                        </div>
+                        <div class="bg-slate-950/50 border border-slate-700 rounded-lg p-3">
+                            <p class="text-[10px] text-slate-400 font-bold uppercase tracking-widest mb-2">10 · Context Management</p>
+                            <ul class="text-xs text-slate-400 space-y-1">
+                                <li class="flex items-start gap-1.5"><span class="text-slate-400">→</span> Use <code class="text-slate-300">/clear</code> between unrelated tasks, not mid-task</li>
+                                <li class="flex items-start gap-1.5"><span class="text-slate-400">→</span> On compact, preserve modified files list + open blockers</li>
+                                <li class="flex items-start gap-1.5"><span class="text-slate-400">→</span> Use <code class="text-slate-300">/btw</code> for quick questions that shouldn't enter conversation history</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+        <!-- Step 3: sf-skills -->
+        <div class="glass-card rounded-xl p-8 border-l-4 border-emerald-400">
+            <div class="flex items-start gap-5">
+                <div class="w-10 h-10 rounded-full bg-emerald-900 border border-emerald-400 flex items-center justify-center flex-shrink-0 font-bold text-emerald-400">C</div>
+                <div class="flex-grow">
+                    <h3 class="text-xl font-bold text-emerald-400 mb-1">Install the Salesforce Skills Library</h3>
+                    <p class="text-sm text-slate-400 mb-4">The <code class="text-emerald-300">forcedotcom/sf-skills</code> GitHub repo contains 60 canonical Salesforce skills — vetted instructions that teach Claude exactly how to interact with Salesforce CLIs, deploy metadata, run Apex tests, work with Agentforce, and more. This is the foundational skill layer for all Salesforce agentic work.</p>
+
+                    <div class="mb-4">
+                        <p class="text-xs text-slate-500 uppercase tracking-widest mb-2">Install all 60 skills in one command</p>
+                        <div class="cmd-block text-base">
+                            <span class="prompt"># Run from your project directory (or globally)</span><br>
+                            npx skills add forcedotcom/sf-skills --yes
+                        </div>
+                    </div>
+
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-3 mb-4">
+                        <div class="bg-slate-950/50 border border-slate-700 rounded-lg p-3 text-center">
+                            <p class="text-emerald-400 font-bold text-lg mb-1">60</p>
+                            <p class="text-xs text-slate-400">Canonical Salesforce Skills</p>
+                        </div>
+                        <div class="bg-slate-950/50 border border-slate-700 rounded-lg p-3 text-center">
+                            <p class="text-emerald-400 font-bold text-lg mb-1">3</p>
+                            <p class="text-xs text-slate-400">Skill Layers (SF CLI → Dev → ADLC)</p>
+                        </div>
+                        <div class="bg-slate-950/50 border border-slate-700 rounded-lg p-3 text-center">
+                            <p class="text-emerald-400 font-bold text-lg mb-1">1</p>
+                            <p class="text-xs text-slate-400">Command to install everything</p>
+                        </div>
+                    </div>
+
+                    <div class="bg-emerald-950/30 border border-emerald-800/30 rounded-lg p-4">
+                        <p class="text-xs text-slate-400"><strong class="text-emerald-300">What this unlocks:</strong> Claude immediately knows how to authenticate orgs, deploy metadata with <code class="text-emerald-300">sf project deploy</code>, run Apex tests, build Agentforce agents, read deployment logs, debug permission errors, and more — without you having to explain Salesforce CLI conventions in every prompt.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+<!-- ═══════════════════════════ SECTION 6: FOUR-PHASE FRAMEWORK ═══ -->
+<section class="bg-slate-900/50 p-8 rounded-2xl border border-slate-700">
+    <div class="mb-10 text-center max-w-3xl mx-auto">
+        <h2 class="text-3xl font-bold mb-4">The Four-Phase Delivery Framework</h2>
+        <p class="text-slate-400 text-lg">A step-by-step transformation from discovery documents to production-ready code.</p>
+    </div>
+
+    <div class="space-y-8">
+
+        <!-- Phase 1 -->
+        <div class="glass-card rounded-xl p-8 border-l-4 border-cyan-400">
+            <div class="flex items-start gap-6">
+                <div class="w-14 h-14 rounded-full bg-cyan-900 border-2 border-cyan-400 flex items-center justify-center flex-shrink-0 text-2xl font-bold accent-cyan">1</div>
+                <div class="flex-grow">
+                    <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-2 mb-4">
+                        <h3 class="text-2xl font-bold accent-cyan">Phase 1: Grounded Discovery</h3>
+                        <span class="inline-block bg-cyan-900 text-cyan-400 px-3 py-1 rounded text-sm font-semibold w-fit">Tool: NotebookLM + MCP</span>
+                    </div>
+                    <p class="text-slate-300 font-semibold mb-4">Goal: Establish an immutable source of truth from raw discovery documents — accessible to Claude without manual file management.</p>
+
+                    <div class="mb-4">
+                        <h4 class="text-cyan-300 font-bold mb-2">Participant Action</h4>
+                        <p class="text-sm text-slate-400 mb-3">Upload discovery documents into the shared <a href="https://notebooklm.google.com/notebook/7dd983b4-8310-4d0c-b7d1-bb21c90be89b" target="_blank" class="text-cyan-400 hover:text-cyan-300 underline">NotebookLM notebook</a>. With <code class="text-cyan-300">notebooklm-mcp-cli</code> configured, Claude can query the notebook directly from within your coding session — no manual copy-paste of context.</p>
+                    </div>
+
+                    <div class="bg-cyan-950/30 border border-cyan-800/30 rounded-lg p-4">
+                        <h4 class="text-cyan-300 font-bold text-sm mb-2">Why This Replaces Local Asset Management</h4>
+                        <p class="text-sm text-slate-400">Instead of maintaining discovery PDFs and transcripts on your machine and manually feeding them into AI tools, NotebookLM becomes the single source of truth. Through the MCP connection, Claude queries it directly — with citations — ensuring every answer is grounded in your actual project documents across all sessions.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Phase 2 -->
+        <div class="glass-card rounded-xl p-8 border-l-4 border-purple-400">
+            <div class="flex items-start gap-6">
+                <div class="w-14 h-14 rounded-full bg-purple-900 border-2 border-purple-400 flex items-center justify-center flex-shrink-0 text-2xl font-bold accent-purple">2</div>
+                <div class="flex-grow">
+                    <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-2 mb-4">
+                        <h3 class="text-2xl font-bold accent-purple">Phase 2: Strategic Assessment</h3>
+                        <span class="inline-block bg-purple-900 text-purple-400 px-3 py-1 rounded text-sm font-semibold w-fit">Tool: Gemini + NotebookLM</span>
+                    </div>
+                    <p class="text-slate-300 font-semibold mb-4">Goal: Translate verified facts into technical specs, data models, and architectural instructions.</p>
+
+                    <div class="mb-4">
+                        <h4 class="text-purple-300 font-bold mb-2">Participant Action</h4>
+                        <p class="text-sm text-slate-400">Attach the NotebookLM notebook to a new <a href="https://gemini.google.com/app" target="_blank" class="text-cyan-400 hover:text-cyan-300 underline">Gemini</a> conversation. Ask Gemini to generate user stories, data models, and architectural diagrams grounded in the discovery source material.</p>
+                    </div>
+
+                    <div class="bg-purple-950/30 border border-purple-800/30 rounded-lg p-4">
+                        <h4 class="text-purple-300 font-bold text-sm mb-2">Why Gemini? The Best General-Purpose Co-Architect</h4>
+                        <p class="text-sm text-slate-400">Gemini's massive context window and deep reasoning capability make it the strongest general-purpose model for architectural synthesis — bridging NotebookLM's grounded facts with Salesforce-specific structural output. For GovCloud teams, Gemini is not just the best choice: it is the primary co-architect, since Claude Code cannot connect to the org directly. Always have Gemini generate the prompt for Cursor or Claude so downstream builders operate from structured, verified inputs.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Phase 3 -->
+        <div class="glass-card rounded-xl p-8 border-l-4 border-pink-400">
+            <div class="flex items-start gap-6">
+                <div class="w-14 h-14 rounded-full bg-pink-900 border-2 border-pink-400 flex items-center justify-center flex-shrink-0 text-2xl font-bold accent-pink">3</div>
+                <div class="flex-grow">
+                    <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-2 mb-4">
+                        <h3 class="text-2xl font-bold accent-pink">Phase 3: Visualization & Planning</h3>
+                        <span class="inline-block bg-pink-900 text-pink-400 px-3 py-1 rounded text-sm font-semibold w-fit">Tool: Lucidchart</span>
+                    </div>
+                    <p class="text-slate-300 font-semibold mb-4">Goal: Convert textual logic into a shared visual blueprint that anchors the team before build begins.</p>
+
+                    <div class="mb-4">
+                        <h4 class="text-pink-300 font-bold mb-2">Participant Action</h4>
+                        <p class="text-sm text-slate-400">Ask Gemini to generate Mermaid.js syntax for the ERD and process flowchart, then paste it directly into <a href="https://lucid.app/lucidchart/cf5e22a0-3ff4-4948-a061-ae6b38d3956a/edit?viewport_loc=-52%2C56%2C1893%2C1427%2C0_0&invitationId=inv_8328d717-4ec3-4bd7-b83a-e316a03a7939" target="_blank" class="text-cyan-400 hover:text-cyan-300 underline">Lucidchart</a>'s Diagram as Code <span class="text-pink-300 font-mono text-xs">&lt;/&gt;</span> editor.</p>
+                    </div>
+
+                    <div class="bg-pink-950/30 border border-pink-800/30 rounded-lg p-4">
+                        <h4 class="text-pink-300 font-bold text-sm mb-2">Alignment Before Build</h4>
+                        <p class="text-sm text-slate-400">Lucidchart renders structured text as live, editable diagrams — eliminating manual drawing and keeping visuals in sync with the data model. This visual artifact ensures architect, developer, and client all agree on the logic before any code is written. Share the diagram link with your team and reference it in your <code class="text-pink-300">CLAUDE.md</code> so the planning agent can use it in Phase 4.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Phase 4 -->
+        <div class="glass-card rounded-xl p-8 border-l-4 border-emerald-400">
+            <div class="flex items-start gap-6">
+                <div class="w-14 h-14 rounded-full bg-emerald-900 border-2 border-emerald-400 flex items-center justify-center flex-shrink-0 text-2xl font-bold text-emerald-400">4</div>
+                <div class="flex-grow">
+                    <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-2 mb-4">
+                        <h3 class="text-2xl font-bold text-emerald-400">Phase 4: Agentic Development</h3>
+                        <span class="inline-block bg-emerald-900 text-emerald-400 px-3 py-1 rounded text-sm font-semibold w-fit">Tool: Cursor + Claude Code</span>
+                    </div>
+
+                    <div class="flex items-center gap-3 mb-6">
+                        <p class="text-slate-300 font-semibold text-sm">Decide where you operate:</p>
+                        <div class="vibe-spectrum">
+                            <span class="text-emerald-400 font-semibold">AI-Augmented</span>
+                            <div class="vibe-spectrum-bar">
+                                <div class="vibe-spectrum-marker"></div>
+                            </div>
+                            <span class="text-rose-400 font-semibold">Vibe Coding</span>
+                        </div>
+                    </div>
+
+                    <!-- Planning Agent callout -->
+                    <div class="bg-amber-950/30 border border-amber-700/40 rounded-lg p-5 mb-6">
+                        <h4 class="text-amber-300 font-bold mb-3 flex items-center gap-2">
+                            <span>📋</span> Rule #1: Always Start with the Planning Agent
+                        </h4>
+                        <p class="text-sm text-slate-300 mb-3">Before executing any code changes, run Claude Code in <strong>plan mode</strong> first. This forces the agent to reason through the full scope of work before touching a single file — dramatically reducing runaway changes and wasted tokens.</p>
+                        <div class="cmd-block mb-3">
+                            <span class="prompt"># In Claude Code — enter plan mode before any task</span><br>
+                            /plan
+                        </div>
+                        <p class="text-xs text-slate-400">Review the plan, adjust scope, then approve execution. The planning agent gives you a preview of exactly what will be changed — keeping you the human-in-the-loop.</p>
+                    </div>
+
+                    <!-- Context saving callout -->
+                    <div class="bg-rose-950/30 border border-rose-700/40 rounded-lg p-5 mb-6">
+                        <h4 class="text-rose-300 font-bold mb-3 flex items-center gap-2">
+                            <span>💾</span> Rule #2: Save Progress Constantly — AI Tools Lose Context
+                        </h4>
+                        <p class="text-sm text-slate-300 mb-4">All AI tools — Claude, Cursor, Gemini — will completely lose context and reset for seemingly no reason, mid-task. There is no warning. The two defenses are frequent git commits and a live <code class="text-rose-300">work_in_progress.md</code> file that the agent maintains throughout the session.</p>
+
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+                            <!-- git -->
+                            <div>
+                                <p class="text-xs text-rose-300 font-bold uppercase tracking-widest mb-2">Git: Your Undo Button</p>
+                                <p class="text-xs text-slate-400 mb-2">Treat every meaningful change as a commit. If the agent goes off the rails or the session resets, you can always roll back to a known good state. Add this instruction to <code class="text-rose-300">CLAUDE.md</code>: <em>"After every completed task, commit all changes."</em></p>
+                                <div class="cmd-block">
+                                    <span class="prompt"># After every meaningful change</span><br>
+                                    git add -p &amp;&amp; git commit -m "wip: [description]"
+                                </div>
+                            </div>
+                            <!-- compact -->
+                            <div>
+                                <p class="text-xs text-rose-300 font-bold uppercase tracking-widest mb-2">/compact: Context Compression</p>
+                                <p class="text-xs text-slate-400 mb-2">When switching tasks or when the context window is getting long, run <code class="text-rose-300">/compact</code>. Claude compresses everything it knows into a concise summary and carries it forward — preventing the session from degrading as work piles up.</p>
+                                <div class="cmd-block">
+                                    <span class="prompt"># Compress context before switching tasks</span><br>
+                                    /compact
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- work_in_progress.md deep dive -->
+                        <div class="bg-slate-900/60 border border-rose-800/30 rounded-lg p-4">
+                            <p class="text-xs text-rose-300 font-bold uppercase tracking-widest mb-3">work_in_progress.md — Your Session Memory</p>
+                            <p class="text-xs text-slate-400 mb-3">This file is a living document that <strong class="text-slate-200">Claude keeps updated throughout the session</strong>. Every time the agent completes a step, it writes what it just did, what decisions it made, and exactly what still needs to happen. When a session resets — or when a teammate picks up your work — Claude reads this file first and reconstructs full context in seconds.</p>
+                            <p class="text-xs text-slate-400 mb-3">Add this to your <code class="text-rose-300">CLAUDE.md</code>: <em class="text-slate-300">"After each completed step, update work_in_progress.md with: current task, what was completed, key decisions made, blockers, and the next steps."</em></p>
+                            <div class="cmd-block text-xs leading-relaxed">
+                                <span class="prompt"># work_in_progress.md — example structure</span><br><br>
+                                <span class="text-slate-300">## Current Task</span><br>
+                                <span class="text-slate-400">Building DSR Approval Flow with 3-tier routing logic</span><br><br>
+                                <span class="text-slate-300">## Completed</span><br>
+                                <span class="text-slate-400">- [x] DSR__c custom object + all fields deployed<br>
+                                - [x] Approval process skeleton created<br>
+                                - [x] Entry criteria validated in SDO</span><br><br>
+                                <span class="text-slate-300">## Key Decisions</span><br>
+                                <span class="text-slate-400">- Using Record-Triggered Flow over Apex (declarative-first rule)<br>
+                                - Tier routing based on Amount__c field thresholds</span><br><br>
+                                <span class="text-slate-300">## Blockers</span><br>
+                                <span class="text-slate-400">- Step 2 approver field still needs confirmation from client</span><br><br>
+                                <span class="text-slate-300">## Next Steps</span><br>
+                                <span class="text-slate-400">- [ ] Add email alert actions to each approval step<br>
+                                - [ ] Write Apex test class for edge cases<br>
+                                - [ ] Final deploy validation before GovCloud push</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Context folder structure -->
+                    <div class="glass-card border-slate-700 overflow-hidden rounded-xl shadow-2xl mb-6">
+                        <div class="bg-slate-800/80 px-4 py-2 border-b border-slate-700 flex justify-between items-center">
+                            <div class="flex items-center gap-2">
+                                <span class="text-xs font-bold uppercase tracking-widest text-slate-400">Project Explorer</span>
+                                <span class="text-[10px] bg-emerald-500/20 text-emerald-400 px-1.5 py-0.5 rounded border border-emerald-500/30">AI_CONTEXT_ROOT</span>
+                            </div>
+                            <div class="flex gap-1.5">
+                                <div class="w-2.5 h-2.5 rounded-full bg-slate-600"></div>
+                                <div class="w-2.5 h-2.5 rounded-full bg-slate-600"></div>
+                                <div class="w-2.5 h-2.5 rounded-full bg-slate-600"></div>
+                            </div>
+                        </div>
+                        <div class="p-4 font-mono text-sm bg-slate-950/40">
+                            <div class="flex items-center gap-2 text-slate-200 mb-3 cursor-default">
+                                <span class="text-lg">📁</span>
+                                <span class="font-bold tracking-tight">SALESFORCE_PROJECT</span>
+                            </div>
+
+                            <div class="ml-4 space-y-1 border-l border-slate-800 pl-4 mb-2">
+                                <div class="flex items-center justify-between group hover:bg-slate-800/30 p-1 rounded">
+                                    <div class="flex items-center gap-2">
+                                        <span class="text-amber-400">📄</span>
+                                        <span class="text-amber-400 font-semibold">CLAUDE.md</span>
+                                    </div>
+                                    <span class="text-[10px] text-amber-500/70 italic">Agent Instructions</span>
+                                </div>
+                                <div class="flex items-center justify-between group hover:bg-slate-800/30 p-1 rounded">
+                                    <div class="flex items-center gap-2">
+                                        <span class="text-rose-400">📄</span>
+                                        <span class="text-rose-400 font-semibold">work_in_progress.md</span>
+                                    </div>
+                                    <span class="text-[10px] text-rose-500/70 italic">Context Persistence</span>
+                                </div>
+                            </div>
+
+                            <div class="ml-4 space-y-1 border-l border-slate-800 pl-4">
+                                <div class="flex items-center justify-between group hover:bg-slate-800/30 p-1 rounded">
+                                    <div class="flex items-center gap-2">
+                                        <span class="text-emerald-400">📂</span>
+                                        <span class="text-emerald-400 font-semibold">Implementation</span>
+                                    </div>
+                                    <span class="text-[10px] text-slate-500 italic">Builder Layer</span>
+                                </div>
+                                <div class="ml-6 space-y-1 border-l border-emerald-900/50 pl-4">
+                                    <div class="flex items-center gap-2 text-emerald-500/80 py-0.5">
+                                        <span>📁</span> force-app/
+                                    </div>
+                                    <div class="ml-6 flex items-center gap-2 text-slate-400 py-0.5">
+                                        <span class="text-blue-400 text-[10px]">⚙️</span> package.xml
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="pt-4 border-t border-slate-700">
+                        <h4 class="text-emerald-300 font-bold mb-2">You Control the Throttle</h4>
+                        <p class="text-sm text-slate-400">Context lives in <code class="text-emerald-300">CLAUDE.md</code> and <code class="text-emerald-300">work_in_progress.md</code> — not local asset folders. Claude reads the <code class="text-emerald-300">CLAUDE.md</code> for project rules and queries NotebookLM for business requirements on demand. You decide how much autonomy to give the AI — from reviewing every line to letting the agent run end-to-end — without losing track of customer intent.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ═══════════════════════════ SECTION 7: SECURITY REMINDERS ═══ -->
+<section class="bg-slate-900/50 p-8 rounded-2xl border border-slate-700">
+    <div class="mb-8 text-center max-w-3xl mx-auto">
+        <h2 class="text-3xl font-bold mb-4">Security & Data Governance</h2>
+        <p class="text-slate-400 text-lg">Non-negotiable rules before you connect any AI tool to a Salesforce environment.</p>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+        <div class="glass-card rounded-xl p-5 border-t-4 border-red-500">
+            <h4 class="text-red-400 font-bold mb-2 text-sm uppercase tracking-widest">Disclose Before You Connect</h4>
+            <p class="text-xs text-slate-400">Manually disclose AWS Bedrock AI tool usage in writing (SOW or email) before interacting with any customer environment. This is a legal requirement — not optional.</p>
+        </div>
+        <div class="glass-card rounded-xl p-5 border-t-4 border-orange-500">
+            <h4 class="text-orange-400 font-bold mb-2 text-sm uppercase tracking-widest">Never Use Customer Data Locally</h4>
+            <p class="text-xs text-slate-400">Customer metadata, prompts, code, and data records are legally confidential. Never store them on your machine — npm packages and other dependencies create exfiltration risks. Use SDOs for prototyping.</p>
+        </div>
+        <div class="glass-card rounded-xl p-5 border-t-4 border-yellow-500">
+            <h4 class="text-yellow-400 font-bold mb-2 text-sm uppercase tracking-widest">Escape = Emergency Stop</h4>
+            <p class="text-xs text-slate-400">If the agent goes off the rails at any point, hit <kbd class="bg-slate-700 px-1.5 py-0.5 rounded text-white text-[10px]">ESC</kbd> to halt immediately. Never enable auto-approval in Claude Code on customer orgs.</p>
+        </div>
+        <div class="glass-card rounded-xl p-5 border-t-4 border-blue-500">
+            <h4 class="text-blue-400 font-bold mb-2 text-sm uppercase tracking-widest">Use SDOs for Testing</h4>
+            <p class="text-xs text-slate-400">Create a sandbox SDO via the Slack Store App — spin up a full-featured Agentforce org to safely prototype, test agentic loops, and validate deployments without risk to customer data.</p>
+        </div>
+        <div class="glass-card rounded-xl p-5 border-t-4 border-purple-500">
+            <h4 class="text-purple-400 font-bold mb-2 text-sm uppercase tracking-widest">Isolated Project Directories</h4>
+            <p class="text-xs text-slate-400">Always initialize Claude Code in a specific, isolated directory for each project. Never grant an agent access to your entire file system or orgs folder simultaneously.</p>
+        </div>
+        <div class="glass-card rounded-xl p-5 border-t-4 border-cyan-500">
+            <h4 class="text-cyan-400 font-bold mb-2 text-sm uppercase tracking-widest">Governance is Human</h4>
+            <p class="text-xs text-slate-400">AI accelerates delivery — it does not replace human governance. You are the manager of these agents and responsible for every action they take. The real work for deployed agents begins after go-live.</p>
+        </div>
+    </div>
+</section>
+
+</main>
+
+<script>
+const ctxRadar = document.getElementById('synergyChart').getContext('2d');
+new Chart(ctxRadar, {
+    type: 'radar',
+    data: {
+        labels: ['Source Fidelity', 'Architectural Synthesis', 'Code Generation', 'Agentic Automation', 'Structured Output'],
+        datasets: [{
+            label: 'NotebookLM',
+            data: [98, 80, 20, 10, 45],
+            backgroundColor: 'rgba(34, 211, 238, 0.2)',
+            borderColor: '#22d3ee',
+            borderWidth: 2,
+            pointBackgroundColor: '#22d3ee'
+        }, {
+            label: 'Gemini (Co-Architect)',
+            data: [55, 95, 90, 75, 95],
+            backgroundColor: 'rgba(192, 132, 252, 0.2)',
+            borderColor: '#c084fc',
+            borderWidth: 2,
+            pointBackgroundColor: '#c084fc'
+        }, {
+            label: 'Claude Code',
+            data: [45, 80, 98, 98, 88],
+            backgroundColor: 'rgba(52, 211, 153, 0.15)',
+            borderColor: '#34d399',
+            borderWidth: 2,
+            pointBackgroundColor: '#34d399'
+        }]
+    },
+    options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        plugins: {
+            legend: {
+                labels: { color: '#e2e8f0', font: { size: 11 } }
+            }
+        },
+        scales: {
+            r: {
+                angleLines: { color: 'rgba(255, 255, 255, 0.1)' },
+                grid: { color: 'rgba(255, 255, 255, 0.1)' },
+                pointLabels: { color: '#e2e8f0', font: { size: 11 } },
+                ticks: { display: false, min: 0, max: 100 }
+            }
+        }
+    }
+});
+</script>
+</body>
+</html>
