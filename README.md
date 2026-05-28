@@ -7,14 +7,10 @@ Repository for AI Tools presentation
 
 Refer to [this canvas](https://salesforce.enterprise.slack.com/docs/T026FPW8M/F0AGMSEFX47) or follow the excerpt below:
 
-1. Open the [Scopezilla Shared Drive Folder](https://drive.google.com/drive/folders/0AAB2bEzno4XfUk9PVA)
-2. Right-click the folder → Download (you'll get a zip).
-3. Unzip it anywhere you like (`Home`, `Desktop`, or another easy-to-find location).
-4. Open your Claude Code client (Desktop, VS Code, or Cursor) → File → Open Folder… → pick the unzipped folder.
+### Helpers
 
-**Sanity check:** the folder you open should contain `CLAUDE.md` and `GETTING-STARTED.md` at its root. If those are not visible at the top level, you opened the wrong folder—go back one level.
+### salesforce-kb
+1. Clone the [salesforce-kb](https://github.com/salesforce-internal/project-kb-salesforce) repo locally
+2. Tell Claude to [install the MCP server](https://github.com/salesforce-internal/project-kb-salesforce#option-0--ask-claude-code-to-install-it-fast-track)
 
 
-After the first time, you do not need to repeat setup. Just use File → Open Recent → `Scopezilla` in your client. Updates apply automatically at the start of each session.
-
-Prefer the terminal? Same idea—`cd` into the unzipped folder and run `claude .`.

@@ -1,0 +1,29 @@
+{
+  "project_name": "exmaple_project",
+  "depth_mode": "story-level",
+  "vertical": null,
+  "rfp_tier": "express",
+  "created_at": "2026-05-28T00:00:00Z",
+  "version": "1.0.13",
+  "completion_status": {
+    "setup": "completed",
+    "tutorial": "not-started",
+    "discover": "completed",
+    "strategy": "not-started",
+    "requirements": "in-progress",
+    "design": "completed",
+    "roadmap": "not-started",
+    "efficiency": "not-started",
+    "validate": "not-started",
+    "narratives": "not-started",
+    "export": "not-started",
+    "meshmesh": "not-started",
+    "slides": "not-started",
+    "rfp": "not-started",
+    "cleanup": "not-started",
+    "wrapup": "not-started",
+    "next": "not-started",
+    "help": "not-started",
+    "contribute": "not-started"
+  }
+}

@@ -1,0 +1,86 @@
+{
+  "project_name": "exmaple_project",
+  "sessions": [
+    {
+      "date": "2026-05-28",
+      "skills_used": ["setup", "discover"],
+      "summary": "Initialized project (story-level depth, express RFP tier). Ingested 5 discovery files, reframed as Salesforce opportunity, produced project summary.",
+      "decisions": [
+        {
+          "decision": "Reframe as Salesforce project",
+          "rationale": "Map Recreation.gov requirements to Salesforce products (Experience Cloud, Service Cloud, Platform, Government Cloud).",
+          "rejected_alternatives": ["Proceed as general scoping", "Stop and clarify project fit"]
+        }
+      ],
+      "open_threads": ["Knowledge base needed", "FedRAMP/ATO timeline TBD", "Pricing model mismatch"],
+      "next_steps": "Requirements skill"
+    },
+    {
+      "date": "2026-05-28",
+      "skills_used": ["requirements"],
+      "summary": "Defined 11 epics (E01-E11) covering public portal, agency portal, contact center, reservation engine, payments, RIDB, security/ATO, data migration, analytics, marketing (optional), training. Installed markitdown[pdf], converted 4 large PDFs (Experience Cloud, Service Cloud, Data Cloud, Agentforce), indexed 2,061 KB sections. Validated epics against KB.",
+      "decisions": [
+        {
+          "decision": "11-epic structure approved",
+          "rationale": "Covers all SOO Section 6 performance objectives; clean boundaries; grounded in KB + SOO requirements.",
+          "rejected_alternatives": ["Consolidate Security+DevOps", "Split Reservation Engine by inventory type"]
+        },
+        {
+          "decision": "Wait for full KB indexing before approving epics",
+          "rationale": "User preferred KB-grounded epics over assumptions-based epics.",
+          "rejected_alternatives": ["Approve with partial KB", "Skip KB validation"]
+        }
+      ],
+      "open_threads": ["Story-level analysis in progress", "Marketing Cloud scope TBD (likely optional)", "Payment integration pattern needs FSC validation"],
+      "next_steps": "Spawn epic-analyst agents for story-level deepening (E01-E11)"
+    },
+    {
+      "date": "2026-05-28",
+      "skills_used": ["design"],
+      "summary": "Pivoted to design skill. Developed comprehensive Salesforce architecture (single Government Cloud org, Experience Cloud dual community strategy, Service Cloud + Voice, Data Cloud for RIDB, Platform for reservation engine, Shield for PII). Created solution brief (client-facing, epic-by-epic ordered by business process) and architecture reference (internal technical documentation). T-shirt sized all 11 epics: 3 XL (E01 Public Portal, E04 Reservation Engine, E08 Data Migration), 3 L (E02 Agency Portal, E05 Payments, E07 Security/ATO), 4 M (E03 Contact Center, E06 RIDB, E09 Analytics, E11 Training), 1 S (E10 Marketing - likely post-MVP).",
+      "decisions": [
+        {
+          "decision": "Single org strategy for 8 federal agencies",
+          "rationale": "Recreation.gov is unified interagency program with shared reservation inventory; role-based access provides sufficient isolation without multi-org complexity.",
+          "rejected_alternatives": ["Multi-org (1 per agency) - would fragment inventory and complicate reporting", "Hybrid (prod single, non-prod multi) - unnecessary for sandbox strategy"]
+        },
+        {
+          "decision": "No middleware (MuleSoft, Boomi) for MVP",
+          "rationale": "Point-to-point integrations (Worldpay, Login.gov, US Bank, EMV terminals) are simple enough for direct Apex API calls; Data Cloud handles RIDB aggregation. 3-5 integrations do not justify middleware overhead ($100K+ annual cost, MuleSoft skills requirement).",
+          "rejected_alternatives": ["MuleSoft Anypoint - too expensive and complex for MVP scale; re-evaluate at 5+ integrations"]
+        },
+        {
+          "decision": "Salesforce DevOps Center for deployment pipeline",
+          "rationale": "Bridges gap between Change Sets (no version control) and full CI/CD (complex toolchain). Government ownership requirement (SOO Section 6.1) favors Git; DevOps Center provides this with point-and-click UI.",
+          "rejected_alternatives": ["Change Sets - rejected due to no version control", "Copado - too expensive ($50K+ annual) for MVP"]
+        },
+        {
+          "decision": "Custom Apex development for lottery system",
+          "rationale": "No AppExchange app identified for federal lottery requirements (fairness, audit trails, SOO constraints). Build custom with cryptographically secure random number generation and Platform Events audit trail.",
+          "rejected_alternatives": ["AppExchange raffle apps - evaluated but none meet federal compliance requirements"]
+        },
+        {
+          "decision": "Mapbox or ArcGIS custom LWC for 1m GSD satellite imagery",
+          "rationale": "Salesforce native maps insufficient for 1-meter Ground Sampling Distance requirement (SOO Section 6.6.5). Custom LWC embeds map tiles; usage-based billing (cost scales with traffic).",
+          "rejected_alternatives": ["Salesforce native maps - rejected due to insufficient imagery resolution", "Google Maps - evaluated but Mapbox/ArcGIS preferred for federal use cases"]
+        }
+      ],
+      "open_threads": [
+        "FedRAMP/ATO timeline validation with USDA CISO (6-9 months assumed; could extend to 12+ months)",
+        "Worldpay tokenization API compatibility (validate technical documentation Month 2)",
+        "EMV terminal vendor API existence (coordinate with Government Month 3)",
+        "Marketing Cloud scope confirmation (likely post-MVP; stakeholder prioritization needed)",
+        "Data Cloud federated archive capability (validate for >2 year historical reservation data)"
+      ],
+      "next_steps": "Roadmap skill to phase epics and identify team composition; or Strategy skill for win themes and competitive positioning (RFI response due May 21, 2026)"
+    }
+  ],
+  "open_threads": [
+    "FedRAMP/ATO timeline and expectations unclear",
+    "Pricing model: transaction-based CLINs vs. user-based Salesforce licenses",
+    "Lottery system implementation — build vs. buy decision pending full Business Rules",
+    "Worldpay tokenization API validation (Month 2)",
+    "EMV terminal vendor API coordination (Month 3)",
+    "Marketing Cloud scope confirmation (likely post-MVP)"
+  ]
+}

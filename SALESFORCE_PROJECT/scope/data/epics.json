@@ -1,0 +1,113 @@
+[
+  {
+    "epic_id": "E01",
+    "epic_name": "Public Reservation Experience",
+    "description": "Build a modern, mobile-first public portal on Experience Cloud (Digital Experiences) for trip planning and reservation booking. Supports multiple inventory types (campsites, permits, tickets, passes, lotteries), advanced search with maps/satellite imagery (1m GSD via Mapbox/ArcGIS integration), white-label widgets for agency websites, and Section 508/WCAG Level AA accessibility.",
+    "confidence": "Confirmed",
+    "kb_sources": [
+      "[KB: experience_cloud_4-2-2026.md:1-3]",
+      "[extends: SOO Section 6.6 — public portal requirements]"
+    ]
+  },
+  {
+    "epic_id": "E02",
+    "epic_name": "Agency & Field User Portal",
+    "description": "Build partner community portals on Experience Cloud for 5,000 internal stakeholders (Agency Program Managers, field users at 6,000+ facilities, concessionaires). Role-based access for inventory management, reservation overrides, business rule configuration, and reporting. Offline-capable mobile app for field users (Salesforce Mobile SDK with local storage) at remote sites.",
+    "confidence": "Confirmed",
+    "kb_sources": [
+      "[KB: experience_cloud_4-2-2026.md (partner communities)]",
+      "[extends: SOO Section 6.6 — back-office tools for 5,000 stakeholders]"
+    ]
+  },
+  {
+    "epic_id": "E03",
+    "epic_name": "Contact Center Operations",
+    "description": "Implement Service Cloud omni-channel contact center supporting 10am-12am ET operations, 365 days/year (closed Thanksgiving, Christmas, New Year's). Multi-channel support (phone via Service Cloud Voice, chat, email), case management, knowledge base, and customer service training programs. Integrate with toll-free number provided by Government.",
+    "confidence": "Confirmed",
+    "kb_sources": [
+      "[KB: service_cloud_3-27-2026.md:18776-18783]",
+      "[KB: voice_dev_guide.md:362-385]",
+      "[extends: SOO Section 6.6.12]"
+    ]
+  },
+  {
+    "epic_id": "E04",
+    "epic_name": "Reservation Engine & Business Rules",
+    "description": "Build complex reservation logic engine on Salesforce Platform with custom objects (Campsite, Facility, Permit, Ticket, Pass, Lottery, Season, Business Rule). Implement dynamic booking windows, cut-off windows, sliding window freeze, block release, rolling release, maximum length of stay, and seasonal configurations. Support for 6,000+ facilities each with unique business rules.",
+    "confidence": "Confirmed",
+    "kb_sources": [
+      "[extends: Platform custom objects + Apex for complex business logic]",
+      "[extends: 5. Sample-Draft-BusinesRules.xlsx — booking windows, seasons, cut-off windows]"
+    ]
+  },
+  {
+    "epic_id": "E05",
+    "epic_name": "Payment Processing & Financial Management",
+    "description": "Integrate Worldpay (credit/debit card processor) and US Bank Lockbox (cash/check) with Salesforce Platform APIs. Implement PCI DSS compliance via tokenization, automated financial reconciliation (match transactions to bank data), exception handling, chargeback processing, and standard/ad-hoc financial reporting. Coordinate with external vendor for EMV terminal lifecycle management at field sites.",
+    "confidence": "Assumed",
+    "kb_sources": [
+      "[assumption: payment integration patterns require FSC validation]",
+      "[extends: SOO Section 6.7 — Treasury/Worldpay requirements]"
+    ]
+  },
+  {
+    "epic_id": "E06",
+    "epic_name": "Recreation Information Database (RIDB)",
+    "description": "Implement RIDB as the aggregation hub for all federal recreation data (reservable + non-reservable inventory) using Data Cloud. Ingest data from agency Content Management Systems via secure automated feeds. Provide public-facing open APIs (bulk download in CSV format, tokenized access) and searchable interfaces. Display RIDB data on maps and lists in public portal.",
+    "confidence": "Confirmed",
+    "kb_sources": [
+      "[KB: data_360_4-10-2026.md — Data Cloud data aggregation, APIs]",
+      "[extends: SOO Section 6.5.6-6.5.8 — RIDB requirements]"
+    ]
+  },
+  {
+    "epic_id": "E07",
+    "epic_name": "Security, Compliance & Authority to Operate (ATO)",
+    "description": "Configure Salesforce Government Cloud for FedRAMP Moderate compliance and obtain USDA Authority to Operate (ATO). Implement Zero Trust architecture, Login.gov SSO integration (public users), MFA for government users, Shield encryption for PII (customer data, transaction data), Platform Event Monitoring for audit trails, and role-based access controls. Deliver security plan, annual updates, and monthly security monitoring.",
+    "confidence": "Confirmed",
+    "kb_sources": [
+      "[extends: Government Cloud FedRAMP Moderate pre-authorization per SOO Section 6.4]",
+      "[extends: Shield encryption + Event Monitoring per SOO Section 6.5]"
+    ]
+  },
+  {
+    "epic_id": "E08",
+    "epic_name": "Data Migration & Transition",
+    "description": "Migrate 21M+ historical reservation records, 6,000+ facility inventory definitions (including business rules), and 10M+ user profiles from incumbent proprietary system to Salesforce. Use Data Loader, external ETL tool (MuleSoft or Heroku), and phased migration approach (Inventory → Active Reservations → Historical Data → User Profiles). Support parallel operations period for validation. Coordinate with incumbent contractor per SOO Section 6.3 transition-out requirements.",
+    "confidence": "Confirmed",
+    "kb_sources": [
+      "[extends: Platform Bulk API for 21M+ records migration]",
+      "[extends: SOO Section 6.3 — phased migration, parallel operations]"
+    ]
+  },
+  {
+    "epic_id": "E09",
+    "epic_name": "Analytics & Reporting",
+    "description": "Build CRM Analytics (Tableau) dashboards for PMO (program oversight, performance metrics), Agency Program Managers (reservation trends, revenue, utilization), and public-facing customer behavior insights. Support standard reports (e.g., monthly performance for QASP) and ad-hoc queries. Integrate with contact center and financial systems for end-to-end visibility.",
+    "confidence": "Confirmed",
+    "kb_sources": [
+      "[KB: tableau_next_4-10-2026.md:1138-1458]",
+      "[extends: SOO Section 6.7.8 — reporting requirements]"
+    ]
+  },
+  {
+    "epic_id": "E10",
+    "epic_name": "Marketing & Communications",
+    "description": "Implement Marketing Cloud for outreach campaigns, SEO optimization, broadcast messaging (push notifications, SMS, email), and customer feedback collection across all channels. Support annual outreach strategy development, multi-channel notifications (e.g., 'Your favorite campground just opened reservations'), and A/B testing for conversion optimization. NOTE: Likely out of MVP scope; flagged as optional enhancement.",
+    "confidence": "Unknown",
+    "kb_sources": [
+      "[assumption: Marketing Cloud likely out of MVP scope]",
+      "[extends: SOO Section 6.8 — may use Experience Cloud native features]"
+    ]
+  },
+  {
+    "epic_id": "E11",
+    "epic_name": "Training & Program Management",
+    "description": "Develop comprehensive training programs for government users (APMs, field staff, concessionaires) and public users (self-service KB articles, FAQs). Establish Agile program management practices: sprint planning, backlog management, UAT coordination, quarterly PMRs, QASP-based surveillance, and DevOps Center for CI/CD. Produce system documentation (architecture, code annotations, user guides) per SOO Section 6.2.",
+    "confidence": "Confirmed",
+    "kb_sources": [
+      "[extends: Platform DevOps Center for CI/CD per SOO Section 6.2.4]",
+      "[extends: SOO Section 6.2.13 — training programs]"
+    ]
+  }
+]
