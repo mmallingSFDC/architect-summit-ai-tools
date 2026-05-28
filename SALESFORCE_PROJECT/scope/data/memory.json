@@ -46,13 +46,13 @@
         },
         {
           "decision": "No middleware (MuleSoft, Boomi) for MVP",
-          "rationale": "Point-to-point integrations (Worldpay, Login.gov, US Bank, EMV terminals) are simple enough for direct Apex API calls; Data Cloud handles RIDB aggregation. 3-5 integrations do not justify middleware overhead ($100K+ annual cost, MuleSoft skills requirement).",
+          "rationale": "Point-to-point integrations (Worldpay, Login.gov, US Bank, EMV terminals) are simple enough for direct Apex API calls; Data Cloud handles RIDB aggregation. 3-5 integrations do not justify middleware overhead.",
           "rejected_alternatives": ["MuleSoft Anypoint - too expensive and complex for MVP scale; re-evaluate at 5+ integrations"]
         },
         {
           "decision": "Salesforce DevOps Center for deployment pipeline",
           "rationale": "Bridges gap between Change Sets (no version control) and full CI/CD (complex toolchain). Government ownership requirement (SOO Section 6.1) favors Git; DevOps Center provides this with point-and-click UI.",
-          "rejected_alternatives": ["Change Sets - rejected due to no version control", "Copado - too expensive ($50K+ annual) for MVP"]
+          "rejected_alternatives": ["Change Sets - rejected due to no version control", "Copado - too expensive for MVP"]
         },
         {
           "decision": "Custom Apex development for lottery system",
@@ -61,7 +61,7 @@
         },
         {
           "decision": "Mapbox or ArcGIS custom LWC for 1m GSD satellite imagery",
-          "rationale": "Salesforce native maps insufficient for 1-meter Ground Sampling Distance requirement (SOO Section 6.6.5). Custom LWC embeds map tiles; usage-based billing (cost scales with traffic).",
+          "rationale": "Salesforce native maps insufficient for 1-meter Ground Sampling Distance requirement (SOO Section 6.6.5). Custom LWC embeds map tiles; usage-based billing.",
           "rejected_alternatives": ["Salesforce native maps - rejected due to insufficient imagery resolution", "Google Maps - evaluated but Mapbox/ArcGIS preferred for federal use cases"]
         }
       ],
@@ -73,14 +73,57 @@
         "Data Cloud federated archive capability (validate for >2 year historical reservation data)"
       ],
       "next_steps": "Roadmap skill to phase epics and identify team composition; or Strategy skill for win themes and competitive positioning (RFI response due May 21, 2026)"
+    },
+    {
+      "date": "2026-05-28",
+      "skills_used": ["export"],
+      "summary": "Exported scoping deliverables. Ran data validator (PASS on data integrity; flagged vendor cost comparisons in architecture reference doc but proceeded as it's marked internal-use-only). Generated Excel workbook (scoping-deliverables.xlsx) with 2 sheets: Epics and Estimates. No user stories, gaps, roadmap, or efficiency data yet (deferred).",
+      "decisions": [
+        {
+          "decision": "Proceed with export despite validator pricing flags",
+          "rationale": "Dollar amounts ($100K MuleSoft, $50K Copado) are vendor product cost comparisons in the architecture reference document, which is explicitly marked 'Internal Use Only - Not for Client Distribution'. These are appropriate for internal technical decision-making context.",
+          "rejected_alternatives": ["Sanitize all dollar amounts before export"]
+        }
+      ],
+      "open_threads": [
+        "Story-level user stories not generated yet (would populate User Stories sheet in workbook)",
+        "Roadmap phasing not completed (would populate Roadmap Phases and Roles & Skills sheets)",
+        "Efficiency analysis not run (would populate Efficiency sheet)",
+        "RFI response narrative not drafted (due May 21, 2026)"
+      ],
+      "next_steps": "Strategy skill for RFI response win themes; or Roadmap skill to phase implementation and identify team composition"
+    }
+  ],
+    {
+      "date": "2026-05-28",
+      "skills_used": ["requirements (story-level completion)"],
+      "summary": "Completed story-level requirements analysis. Spawned 11 epic-analyst agents (batched in groups of 6 per user constraint) to generate INVEST user stories + gap analysis. Produced 257 user stories and 103 gaps across all epics.",
+      "decisions": [
+        {
+          "decision": "Batch agent spawning in groups ≤6",
+          "rationale": "User requested limiting to 6 consecutive agents to avoid token usage. Launched in two batches: first 7 agents, then final 4 agents.",
+          "rejected_alternatives": ["Launch all 11 agents simultaneously (would exceed user's token budget preference)"]
+        }
+      ],
+      "open_threads": [
+        "Full JSON consolidation into user-stories.json and gaps.json pending (257 stories, 103 gaps)",
+        "FedRAMP/ATO timeline validation with USDA CISO (6-9 months assumed)",
+        "Worldpay tokenization API documentation request (G0501 blocker)",
+        "EMV terminal vendor selection and API specs (G0503)",
+        "Marketing Cloud licensing decision (E10 - likely post-MVP)",
+        "Experience Cloud offline capability gap — requires Mobile SDK custom development (G0207 critical)"
+      ],
+      "next_steps": "Consolidate full JSON from task notifications into user-stories.json (257 stories) and gaps.json (103 gaps), then run json-to-csv.py. Present gap summary organized by category."
     }
   ],
   "open_threads": [
+    "Story-level requirements consolidation in progress (257 stories from 11 agents)",
     "FedRAMP/ATO timeline and expectations unclear",
     "Pricing model: transaction-based CLINs vs. user-based Salesforce licenses",
     "Lottery system implementation — build vs. buy decision pending full Business Rules",
     "Worldpay tokenization API validation (Month 2)",
     "EMV terminal vendor API coordination (Month 3)",
-    "Marketing Cloud scope confirmation (likely post-MVP)"
+    "Marketing Cloud scope confirmation (likely post-MVP)",
+    "Experience Cloud offline support — critical gap G0207 (not natively supported)"
   ]
 }

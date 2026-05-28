@@ -1,0 +1,63 @@
+{
+  "total_stories": 257,
+  "total_gaps": 103,
+  "epics_completed": 11,
+  "completion_date": "2026-05-28",
+  "story_breakdown": {
+    "E01": {
+      "stories": 20,
+      "gaps": 10,
+      "epic_name": "Public Reservation Experience"
+    },
+    "E02": {
+      "stories": 30,
+      "gaps": 10,
+      "epic_name": "Agency & Field User Portal"
+    },
+    "E03": {
+      "stories": 18,
+      "gaps": 9,
+      "epic_name": "Contact Center Operations"
+    },
+    "E04": {
+      "stories": 40,
+      "gaps": 15,
+      "epic_name": "Reservation Engine & Business Rules"
+    },
+    "E05": {
+      "stories": 22,
+      "gaps": 7,
+      "epic_name": "Payment Processing & Financial Management"
+    },
+    "E06": {
+      "stories": 18,
+      "gaps": 8,
+      "epic_name": "RIDB (Data Cloud)"
+    },
+    "E07": {
+      "stories": 27,
+      "gaps": 8,
+      "epic_name": "Security, Compliance & ATO"
+    },
+    "E08": {
+      "stories": 32,
+      "gaps": 12,
+      "epic_name": "Data Migration & Transition"
+    },
+    "E09": {
+      "stories": 18,
+      "gaps": 8,
+      "epic_name": "Analytics & Reporting"
+    },
+    "E10": {
+      "stories": 12,
+      "gaps": 10,
+      "epic_name": "Marketing & Communications"
+    },
+    "E11": {
+      "stories": 20,
+      "gaps": 6,
+      "epic_name": "Training & Program Management"
+    }
+  }
+}

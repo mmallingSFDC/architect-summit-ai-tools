@@ -1,0 +1,14 @@
+[
+  {
+    "id": "US-0101",
+    "epic_id": "E01",
+    "epic_name": "Public Reservation Experience",
+    "persona": "Public User",
+    "user_story": "As a public user, I want to search for available campsites by facility name, date range, and amenities so that I can find sites that meet my needs",
+    "acceptance_criteria": "Given I enter a facility name and date range, When I click Search, Then the system returns available sites matching my criteria within 3 seconds\nGiven I apply filters for amenities (water hookup, ADA accessible), When results are displayed, Then only sites matching all selected filters are shown\nGiven no sites are available, When I search, Then the system displays alternative date suggestions or nearby facilities",
+    "priority": "High",
+    "source": "[extends: SOO Section 6.6.1 — comprehensive search and filtering capabilities]",
+    "assumptions": "Search uses SOSL or custom Apex with indexed fields; alternative suggestions leverage Data Cloud RIDB aggregation",
+    "uncertainty_level": "Confirmed"
+  }
+]
