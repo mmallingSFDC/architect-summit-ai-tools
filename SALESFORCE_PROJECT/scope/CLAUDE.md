@@ -1,4 +1,4 @@
-# exmaple_project — Scopezilla Project
+# example_project — Scopezilla Project
 
 **Depth mode**: story-level (full user stories per epic, story-level estimates)  
 **RFP tier**: express (light-weight RFI response)  
