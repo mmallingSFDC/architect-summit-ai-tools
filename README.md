@@ -5,7 +5,7 @@ Repository for AI Tools presentation
 
 ### Install
 
-Refer to [this canvas](https://salesforce.enterprise.slack.com/docs/T026FPW8M/F0AGMSEFX47) or follow the excerpt below:
+Refer to [this canvas](https://salesforce.enterprise.slack.com/docs/T026FPW8M/F0AGMSEFX47)
 
 ### Helpers
 
