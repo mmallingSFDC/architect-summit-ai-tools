@@ -1,0 +1,128 @@
+[
+  {
+    "resource_id": "R01",
+    "role": "Salesforce Architect",
+    "phases_active": "1-4",
+    "rationale": "Load-bearing role across all phases. Phase 1: Foundation data model design (Reservation__c, Facility__c, Business_Rule__c) and security architecture (Shield, Login.gov). Phase 2-3: Integration patterns (Worldpay, Service Cloud Voice, Data Cloud connectors). Phase 4: Analytics strategy and DevOps governance. Addresses: Government Cloud org design, FedRAMP compliance architecture, multi-cloud integration (Experience Cloud + Service Cloud + Data Cloud + Platform).",
+    "comments": "Highest continuity requirement — same architect across all phases preferred to maintain architectural coherence. Knowledge transfer risk if architect changes mid-program."
+  },
+  {
+    "resource_id": "R02",
+    "role": "Security Specialist (FedRAMP, ATO, PCI DSS)",
+    "phases_active": "1-2",
+    "rationale": "Phase 1 critical path: USDA ATO application (6-9 months), FedRAMP Moderate compliance mapping, Shield Platform Encryption configuration, Platform Event Monitoring setup, Login.gov SSO integration. Phase 2: PCI DSS compliance validation for Worldpay tokenization (SAQ A-EP self-assessment). Addresses: ATO is highest schedule risk (E07 L epic); PCI DSS gaps would block payments go-live.",
+    "comments": "Must have federal government experience (NIST 800-53 controls, ATO application process). Commercial-only security background insufficient for USDA CISO coordination."
+  },
+  {
+    "resource_id": "R03",
+    "role": "Senior Apex Developer",
+    "phases_active": "1-3",
+    "rationale": "Phase 1 peak: Complex business rules engine for 6,000+ facilities (E04 XL epic) — dynamic booking window calculation (rolling, fixed, sliding freeze), conflict detection, Platform Events for real-time inventory. Phase 2: Booking workflows, payment transaction handling, batch reconciliation jobs. Phase 3: Data migration transformation scripts (21M+ records). Addresses: E04 is highest technical risk epic; business logic errors (double-booking, incorrect windows) would undermine program credibility.",
+    "comments": "Requires Apex governor limits expertise (Bulk API optimization for 21M+ records, Platform Events async patterns). Junior developers insufficient for business rules complexity."
+  },
+  {
+    "resource_id": "R04",
+    "role": "LWC Developer (JavaScript/HTML/CSS)",
+    "phases_active": "2-3",
+    "rationale": "Phase 2 critical: Custom LWC map component integrating Mapbox/ArcGIS for 1m Ground Sampling Distance satellite imagery (E01 XL epic requirement), white-label embeddable widgets for agency websites (cross-domain iframe/Web Components), mobile-first responsive design. Phase 3: Business rule configuration UI for APMs (non-technical users). Addresses: Map integration is highest UI complexity; WCAG Level AA compliance testing burden.",
+    "comments": "Must have experience with third-party JavaScript library integration (Mapbox/ArcGIS APIs) and Section 508 accessibility patterns. Generic web developer insufficient."
+  },
+  {
+    "resource_id": "R05",
+    "role": "Experience Cloud Specialist",
+    "phases_active": "2-3",
+    "rationale": "Phase 2: Digital Experiences public portal for 48M annual visitors — site structure, guest user profiles, Login.gov SSO integration, Section 508/WCAG Level AA compliance. Phase 3: Partner Community for 5,000 internal stakeholders (8 agencies) — role-based access, criteria-based sharing rules, agency-specific dashboards. Addresses: E01 + E02 are 2 of 3 XL epics; Experience Cloud licensing optimization critical for 5,000+ users + 48M guests.",
+    "comments": "Must distinguish Digital Experiences (public, guest users) from Partner Community (authenticated, role-based) — different licensing models and design patterns."
+  },
+  {
+    "resource_id": "R06",
+    "role": "Integration Developer (REST APIs, SAML, SFTP)",
+    "phases_active": "1-3",
+    "rationale": "Phase 1: Login.gov SAML 2.0 SSO with Apex JIT provisioning handler, agency IdP OAuth/SAML for government users (MFA enforcement). Phase 2: Worldpay REST API (OAuth 2.0 tokenization), US Bank Lockbox SFTP file downloads (CSV parsing), Service Cloud Voice Amazon Connect integration. Phase 3: Data Cloud connectors for 8 agency CMS (S3, Azure, REST API). Addresses: 10+ external integrations across phases; API documentation gaps (Worldpay, EMV vendor) require troubleshooting expertise.",
+    "comments": "Requires OAuth 2.0, SAML 2.0, SFTP, and REST API experience. Government SSO integration (Login.gov) is atypical — commercial SSO patterns do not directly apply."
+  },
+  {
+    "resource_id": "R07",
+    "role": "Service Cloud Specialist",
+    "phases_active": "2",
+    "rationale": "Phase 2 only: Omni-Channel contact center for 10am-12am ET operations (phone via Service Cloud Voice + Amazon Connect, chat, email), case management workflows and SLAs, Knowledge Base article embedding in Experience Cloud, CRM Analytics dashboards for QASP metrics (first-contact resolution, handle time). Addresses: E03 M epic; contact center is SOO Section 6.6.12 requirement for 365-day operations.",
+    "comments": "Service Cloud Voice telephony setup is complex (Amazon Connect partner integration); requires prior Voice implementation experience. Generic Service Cloud knowledge insufficient."
+  },
+  {
+    "resource_id": "R08",
+    "role": "Data Cloud Specialist",
+    "phases_active": "3",
+    "rationale": "Phase 3 only: RIDB aggregation hub (E06 M epic) — Data Cloud connector setup for 8 agency CMS (S3, Azure, REST API), data prep recipes to harmonize multi-agency schemas, Data Cloud Connect REST API for public bulk CSV downloads. Addresses: Data Cloud is newer Salesforce product (learning curve); agency CMS data quality varies (missing fields, invalid geolocations); public API performance at scale.",
+    "comments": "Data Cloud is distinct from Platform (different data model, different query language). Requires Data Cloud certification or equivalent hands-on experience."
+  },
+  {
+    "resource_id": "R09",
+    "role": "Mobile Developer (Salesforce Mobile SDK)",
+    "phases_active": "3",
+    "rationale": "Phase 3 only: Offline mobile app for field users at 6,000+ remote facilities (E02 L epic) — Salesforce Mobile SDK with local storage (SQLite), sync conflict resolution logic (last-write-wins for inventory, manual Case review for reservation conflicts), connectivity monitoring. Addresses: Offline sync conflicts are highest E02 risk; Mobile SDK offline validation requires field site pilot with real connectivity constraints.",
+    "comments": "Salesforce Mobile SDK is distinct from generic mobile development (iOS/Android). Must have prior Salesforce Mobile SDK offline sync experience — no native conflict resolution exists."
+  },
+  {
+    "resource_id": "R10",
+    "role": "Data Migration Lead",
+    "phases_active": "3",
+    "rationale": "Phase 3 critical path: Phased migration strategy for 21M+ historical reservations, 6,000+ facility definitions (including business rules translation), 10M+ user profiles from incumbent proprietary system (E08 XL epic). Coordinates incumbent contractor per SOO Section 6.3 transition-out requirements, designs parallel operations validation (2-4 weeks), owns rollback plans per phase. Addresses: E08 is highest data risk epic; incumbent cooperation uncertainty; data quality unknowns.",
+    "comments": "Requires Salesforce Bulk API expertise (governor limits for 21M+ records) and federal contractor transition-out experience. Commercial data migration patterns insufficient for incumbent coordination complexity."
+  },
+  {
+    "resource_id": "R11",
+    "role": "ETL Developer (MuleSoft or Heroku)",
+    "phases_active": "3",
+    "rationale": "Phase 3 only: Business rules reverse-engineering and translation from incumbent system (6,000+ facilities × unique rules), data cleansing (duplicates, missing fields, invalid geolocations), MuleSoft Anypoint or Heroku setup for complex transformations. Addresses: Incumbent contractor may not document all business rules (sample rules in RFI are incomplete); ETL tool required for 21M+ record volume (Data Loader insufficient for transformations).",
+    "comments": "MuleSoft vs. Heroku decision deferred to Phase 1 (architecture decision). Either tool requires Salesforce connector experience and Bulk API optimization."
+  },
+  {
+    "resource_id": "R12",
+    "role": "Data Quality Analyst",
+    "phases_active": "3",
+    "rationale": "Phase 3 only: Validate 21M+ migrated records (automated validation rules + manual spot checks by APMs), identify duplicates (Account Person Accounts), missing required fields, invalid geolocations. Designs data quality checkpoints per migration phase (Inventory → Active Reservations → Historical → User Profiles). Addresses: Data quality issues would undermine parallel operations validation; <1% error rate target requires systematic validation approach.",
+    "comments": "Requires Salesforce data model knowledge (standard vs. custom objects, required fields, validation rules) and statistical sampling techniques for 21M+ record validation."
+  },
+  {
+    "resource_id": "R13",
+    "role": "CRM Analytics Developer (Tableau)",
+    "phases_active": "4",
+    "rationale": "Phase 4 only: CRM Analytics (Tableau) embedded dashboards for PMO oversight (program performance metrics), APM reservation trends (revenue by agency, utilization, popular facilities), public-facing customer behavior insights. Standard QASP reports (monthly performance for quarterly PMRs), ad-hoc query builder for APMs. Addresses: E09 M epic; QASP surveillance requires automated dashboards (manual reporting insufficient for monthly PMR cadence).",
+    "comments": "CRM Analytics (Tableau) is distinct from Reports & Dashboards (different data model, different query language). Requires Tableau CRM certification or equivalent."
+  },
+  {
+    "resource_id": "R14",
+    "role": "Training Specialist",
+    "phases_active": "4",
+    "rationale": "Phase 4 only: Multi-tiered training programs (E11 M epic) — government users (APMs: business rule configuration, field staff: offline mobile workflows, concessionaires: reservation management), public users (self-service Knowledge Base articles). Train-the-trainer: certify 2-3 government 'champions' per agency (8 agencies × 2-3 = 16-24 trainers). Addresses: Training effectiveness depends on Government user engagement (5,000 stakeholders); train-the-trainer reduces ongoing training burden post-go-live.",
+    "comments": "Requires adult learning principles expertise and train-the-trainer facilitation experience. Generic Salesforce training insufficient for government user audience (federal compliance context)."
+  },
+  {
+    "resource_id": "R15",
+    "role": "DevOps Engineer",
+    "phases_active": "1,4",
+    "rationale": "Phase 1: Government Cloud org setup (sandbox strategy: Dev, Integration, UAT, Prod), GitHub repository initialization. Phase 4: DevOps Center configuration (Work Item workflow, deployment pipeline Dev → Integration → UAT → Prod), GitHub integration, CI/CD training for Government IT staff. Addresses: E11 M epic; Government ownership requirement (SOO Section 6.1) favors Git-backed version control; DevOps Center bridges gap between Change Sets (no version control) and full CI/CD (complex toolchain).",
+    "comments": "Salesforce DevOps Center is newer product (distinct from Jenkins/GitHub Actions patterns). Requires DevOps Center hands-on experience or willingness to learn during Phase 1."
+  },
+  {
+    "resource_id": "R16",
+    "role": "Accessibility Specialist (Section 508 / WCAG Level AA)",
+    "phases_active": "2",
+    "rationale": "Phase 2 only: Section 508 / WCAG Level AA compliance testing for public portal (E01 XL epic requirement) — screen reader validation (JAWS, NVDA), keyboard navigation, color contrast, ARIA labels, mobile accessibility. Conducts accessibility audit at sprint 12 and sprint 18 (pre-UAT). Addresses: 508 compliance is SOO mandatory requirement; remediation discovered late (post-UAT) would delay go-live.",
+    "comments": "Requires Section 508 certification or equivalent (WCAG 2.1 Level AA). Generic QA testing insufficient — accessibility testing is specialized discipline (assistive technology usage patterns)."
+  },
+  {
+    "resource_id": "R17",
+    "role": "QA Engineer",
+    "phases_active": "1-4",
+    "rationale": "All phases: Phase 1 unit testing (85%+ Apex code coverage for business rules engine, regression testing for booking window logic edge cases). Phase 2 load testing (48M annual visitors capacity validation, peak load performance for booking workflows). Phase 3 data validation (21M+ migrated records spot checks, parallel operations validation). Phase 4 UAT coordination (test case authoring, defect tracking, stakeholder sign-off). Addresses: E04 business rules complexity requires extensive unit testing; E01 peak load performance is critical risk.",
+    "comments": "Requires Salesforce-specific testing tools knowledge (Apex Test Framework, Salesforce CLI, JMeter for load testing). Generic software QA background insufficient for Apex governor limits testing."
+  },
+  {
+    "resource_id": "R18",
+    "role": "Scrum Master / PMO Liaison",
+    "phases_active": "1-4",
+    "rationale": "All phases: Agile ceremonies (bi-weekly sprint planning, demos, retrospectives; monthly stakeholder reviews). QASP-based surveillance (monthly performance metrics reporting for quarterly PMRs). Government stakeholder coordination (USDA CISO for ATO, APMs for requirements validation, field users for UAT). Risk escalation and dependency tracking across 4 phases. Addresses: E11 M epic; SOO Section 6.2 requires Agile program management; quarterly PMRs are contract surveillance mechanism.",
+    "comments": "Requires federal government program management experience (quarterly PMR format, QASP surveillance, ATO coordination). Commercial Scrum Master background insufficient for government stakeholder coordination complexity."
+  }
+]

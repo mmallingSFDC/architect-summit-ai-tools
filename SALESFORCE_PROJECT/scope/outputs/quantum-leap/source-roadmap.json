@@ -1,0 +1,57 @@
+[
+  {
+    "phase_number": 1,
+    "phase_name": "Foundation & Security",
+    "objectives": "Establish Government Cloud org with FedRAMP Moderate compliance, obtain USDA Authority to Operate (ATO), and configure core reservation engine data model (Facility, Site, Season, Business Rule, Reservation). Security-first approach ensures all subsequent features operate within approved authority boundary. Foundation data model enables Phase 2 public booking workflows.",
+    "epics_included": "E07,E04",
+    "success_criteria": "USDA ATO obtained; Government Cloud org configured with Shield encryption; Login.gov SSO operational; MFA enforced for government users; core reservation objects (Facility__c, Site__c, Season__c, Business_Rule__c, Reservation__c) deployed with sample data for 10+ facilities; business rules engine validates booking windows (rolling, fixed, sliding freeze) in sandbox environment",
+    "dependencies": "None (greenfield). Requires Government to provide Login.gov sandbox credentials and USDA CISO coordination for ATO application.",
+    "risks": "ATO timeline risk (6-9 months typical, may extend to 12+ months if USDA CISO backlog); business rules complexity may surface edge cases requiring rework in Phase 2; Login.gov sandbox environment availability uncertain",
+    "kb_sources": [
+      "[KB: Government Cloud FedRAMP Moderate pre-authorization reduces ATO timeline vs. commercial cloud]",
+      "[assumption: 6-9 month ATO timeline based on typical federal agency experience; validate with USDA CISO]"
+    ]
+  },
+  {
+    "phase_number": 2,
+    "phase_name": "Core Reservation & Public Portal",
+    "objectives": "Launch minimum viable product (MVP) for public users: mobile-first reservation portal with advanced search (map integration, 1m GSD satellite imagery), booking workflows for multiple inventory types (campsites, permits, tickets), integrated payment processing (Worldpay tokenization), and omni-channel contact center (phone via Service Cloud Voice, chat, email). Value delivery begins.",
+    "epics_included": "E01,E05,E03",
+    "success_criteria": "Experience Cloud Digital Experiences site live with custom LWC map component (Mapbox/ArcGIS); Login.gov SSO operational for public users; booking workflows functional for 3+ inventory types; Worldpay payment integration operational with PCI DSS tokenization; Service Cloud Voice contact center operational (10am-12am ET, phone/chat/email routing); Section 508/WCAG Level AA compliance validated; load testing confirms 48M annual visitor capacity",
+    "dependencies": "Phase 1 complete (requires ATO + reservation engine data model). Requires Government to provide toll-free number for Service Cloud Voice and Worldpay production credentials.",
+    "risks": "Map integration complexity (custom LWC for 1m GSD may extend 1-2 sprints); Worldpay API documentation gaps (validate Month 2); peak load performance requires extensive testing; Section 508 compliance remediation may extend UAT timeline",
+    "kb_sources": [
+      "[KB: experience_cloud_4-2-2026.md — Digital Experiences mobile-first patterns]",
+      "[KB: service_cloud_3-27-2026.md — Service Cloud Voice Amazon Connect integration]",
+      "[assumption: PCI DSS tokenization via Worldpay iframe reduces compliance scope; validate with Worldpay technical documentation]"
+    ]
+  },
+  {
+    "phase_number": 3,
+    "phase_name": "Agency Tools & Data Integration",
+    "objectives": "Enable back-office operations for 5,000 internal stakeholders (Agency Program Managers, field users, concessionaires) via partner community portals with offline mobile capability. Establish Recreation Information Database (RIDB) as aggregation hub for all federal recreation data using Data Cloud. Migrate 21M+ historical reservations, 6,000+ facility definitions, and 10M+ user profiles from incumbent system.",
+    "epics_included": "E02,E06,E08",
+    "success_criteria": "Experience Cloud Partner Community operational with role-based access for 8 agencies; offline mobile app (Salesforce Mobile SDK) validated at 3+ field sites with limited connectivity; business rule configuration UI functional for APMs; Data Cloud connectors operational for 8 agency CMS; RIDB public API delivering bulk CSV downloads; phased data migration complete (Inventory → Active Reservations → Historical → User Profiles) with parallel operations validation (2-4 weeks); data quality validation confirms <1% error rate",
+    "dependencies": "Phase 2 complete (requires public portal operational for migration validation). Requires incumbent contractor cooperation per SOO Section 6.3 transition-out requirements and agency CMS API credentials.",
+    "risks": "Offline mobile sync conflicts (multiple field users updating same inventory); incumbent contractor may not fully document business rules (reverse-engineering required); data quality issues (duplicates, missing fields) may extend cleansing timeline; 21M+ record volume requires Bulk API optimization; parallel operations critical for catching data integrity issues before cutover",
+    "kb_sources": [
+      "[KB: experience_cloud_4-2-2026.md — Partner Community role-based access patterns]",
+      "[KB: data_360_4-10-2026.md — Data Cloud connector setup for S3/Azure/REST API sources]",
+      "[assumption: Salesforce Mobile SDK offline capability requires custom sync conflict resolution logic; no native conflict resolution]",
+      "[assumption: phased migration reduces risk vs. big-bang cutover; industry best practice for 21M+ records]"
+    ]
+  },
+  {
+    "phase_number": 4,
+    "phase_name": "Analytics, Training & Enhancements",
+    "objectives": "Establish operational visibility via CRM Analytics (Tableau) dashboards for PMO oversight, agency performance tracking, and public-facing insights. Deliver comprehensive training programs for government users (APMs, field staff, concessionaires) and public self-service knowledge base. Configure Agile program management practices (DevOps Center, QASP surveillance). Marketing Cloud enhancement flagged as optional (likely post-MVP).",
+    "epics_included": "E09,E11,E10",
+    "success_criteria": "CRM Analytics dashboards operational (PMO oversight, APM reservation trends, public-facing popular facilities); standard QASP reports automated (monthly performance metrics); ad-hoc query builder functional for APMs; training programs delivered (government user hands-on workshops, train-the-trainer for 2-3 champions per agency, public self-service KB articles); DevOps Center configured with GitHub deployment pipeline; system documentation complete (architecture diagrams, code annotations, user guides); Marketing Cloud decision confirmed (in/out of scope for MVP)",
+    "dependencies": "Phase 3 complete (requires operational data from reservations, contact center, payments for meaningful analytics). Training requires stable system (no major feature changes).",
+    "risks": "Dashboard requirements may evolve during stakeholder review; CRM Analytics licensing cost scales with 5,000+ internal users; training effectiveness depends on Government user engagement; Marketing Cloud likely deferred to post-MVP (Year 2+); DevOps Center learning curve for Government IT staff",
+    "kb_sources": [
+      "[KB: tableau_next_4-10-2026.md — CRM Analytics embedded dashboards in Experience Cloud]",
+      "[assumption: Marketing Cloud likely post-MVP based on SOO Section 6.8 optionality and licensing cost]"
+    ]
+  }
+]
